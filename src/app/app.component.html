@@ -1,0 +1,29 @@
+<div>
+  <h1>Control de peliculas</h1>
+  <table border="1" *ngIf="hayRegistros(); else sinpeliculas">
+    <tr>
+      <td>codigo</td><td>titulo</td><td>precio</td><td>borrar</td><td>seleccionar</td>
+    </tr>
+    <tr *ngFor="let art of peliculas">
+      <td>{{art.codigo}}</td>
+      <td>{{art.titulo}}</td>
+      <td>{{art.precio}}</td>
+      <td><button (click)="borrar(art.codigo)"></button></td>
+      <td><button (click)="seleccionar(art)"></button></td>
+    </tr>
+  </table>
+  <ng-template #sinpeliculas><p>no hay peliculas</p></ng-template>
+  <div>
+<p>
+  codigo:<input type="number" [(ngModel)]="art.codigo" />
+</p>
+<p>
+  titulo: <input type="text" [(ngModel)]="art.titulo"/>
+</p>   
+<p>
+  precio: <input type="number" [(ngModel)]="art.precio"/>
+</p>
+<p><button (click)="agregar()">agregar</button></p>
+<button (click)="modificar()">modificar</button>
+</div>
+</div>
